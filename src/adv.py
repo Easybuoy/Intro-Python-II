@@ -77,4 +77,5 @@ while True:
         break
      
     else:
+        print('Invalid command entered')
         break
