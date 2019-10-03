@@ -4,3 +4,9 @@ class Player:
     def __init__(self, name, room):
         self.name = name
         self.room = room
+
+    def setRoom(self,room):
+        self.room = room
+
+    def getRoom(self):
+        return self.room
