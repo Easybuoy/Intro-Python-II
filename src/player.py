@@ -12,17 +12,27 @@ class Player:
     def getRoom(self):
         return self.room
 
+    def onTake(self, inventory):
+        print(f'You have added {inventory} to your inventory')
+    
+    def onDrop(self, inventory):
+        print(f'You have dropped {inventory} inventory')
+
+
     def addInventory(self, inventory):
         self.inventory.append(inventory)
-        print(f'You have added {inventory} to your inventory')
+        self.onTake(inventory)
 
     def dropInventory(self, inventory):
         if len(self.inventory) == 0:
-            return 'No inventory to drop'
+            print('No inventory to drop')
+            return
         else:
             for i in range(0, len(self.inventory)):
                 if (inventory == self.inventory[i]):
-                    print(f'You have dropped {[self.inventory[i]]} item')
+                    self.onDrop(inventory)
                     self.inventory.pop(i)
                     break
+                else:
+                    print(f"{inventory} not found in  inventory")
         

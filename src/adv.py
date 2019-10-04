@@ -55,7 +55,7 @@ player = Player('ezekiel', room['outside'])
 while True:
     currentRoom = player.getRoom()
     print(currentRoom)
-    print(f'You are currently holding {player.room.items} items')
+    
     # print(f"Current room: {currentRoom}")
     # print(getattr(room[currentRoom], 'n_to'))
     # print(currentRoom.n_to)
