@@ -54,30 +54,42 @@ player = Player('ezekiel', room['outside'])
 #     print(f'{singleRoom}: {room[singleRoom].name}')
 while True:
     currentRoom = player.getRoom()
-
     print(currentRoom)
+    print(f'You are currently holding {player.room.items} items')
     # print(f"Current room: {currentRoom}")
     # print(getattr(room[currentRoom], 'n_to'))
     # print(currentRoom.n_to)
 
-    userInput = input('Enter where to go: ')
-    if(userInput == 'n'):
-        # print(room[currentRoom].n_to)
+    userInput = input('Enter where to go: ').lower().split(' ')
+    if (len(userInput) == 1):
 
-        player.setRoom(currentRoom.n_to)
-    elif (userInput == 's'):
-        player.setRoom(currentRoom.n_to)
+        if(userInput == 'n'):
+            # print(room[currentRoom].n_to)
 
-    elif (userInput == 'w'):
-        player.setRoom(currentRoom.w_to)
-    elif (userInput == 'e'):
-        player.setRoom(currentRoom.e_to)
-    elif (userInput == 'q'):
-        print('See Ya')
-        break
-     
+            player.setRoom(currentRoom.n_to)
+        elif (userInput == 's'):
+            player.setRoom(currentRoom.n_to)
+
+        elif (userInput == 'w'):
+            player.setRoom(currentRoom.w_to)
+        elif (userInput == 'e'):
+            player.setRoom(currentRoom.e_to)
+        elif (userInput == 'q'):
+            print('See Ya')
+            break
+        
+        else:
+            print('Invalid command entered')
+            break
+    elif (len(userInput) == 2):
+        if(userInput[0] == 'take'):
+            player.addInventory(userInput[1])
+        elif (userInput[0] == 'drop'):
+            player.dropInventory(userInput[1])
+        else:
+            print('Invalid command entered')
+            break
     else:
         print('Invalid command entered')
         break
 
-    
